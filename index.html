@@ -19,7 +19,7 @@
     .lang-sel{background:transparent;border:1px solid #f5c518;border-radius:6px;color:#f5c518;font-family:'Domine',serif;font-size:11px;font-weight:600;letter-spacing:1px;padding:5px 28px 5px 10px;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='4'%3E%3Cpath d='M0 0l3.5 4 3.5-4z' fill='%23f5c518'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;outline:none;}
     .lang-sel option{background:#1a2238;color:#fff;}
     .panels-box{max-width:920px;margin:0 auto;background:#1a2238;border-radius:12px;border:1px solid rgba(255,255,255,.10);padding:20px;}
-    .panels-row{display:flex;gap:48px;align-items:flex-start;}
+    .panels-row{display:flex;gap:48px;align-items:stretch;}
     .vat-note{margin-top:10px;font-size:10px;color:rgba(255,255,255,.40);text-align:center;letter-spacing:.5px;}
     .panel{flex:1;min-width:0;border-radius:8px;overflow:hidden;background:#1c2540;}
     .panel-a{border:1px solid rgba(255,255,255,.09);}
@@ -52,7 +52,29 @@
     .footer-val{font-family:'Domine',serif;font-size:15px;font-weight:700;text-align:right;flex:1;color:#f5c518;}
     .footer-val.green{color:#5bcf80;}
     .vrs-warning{padding:9px 14px;font-size:10px;line-height:1.4;color:#f5c518;background:rgba(201,168,60,.08);border-top:1px solid rgba(201,168,60,.2);}
-    @media(max-width:600px){.panels-row{flex-direction:column;}.header-inner{flex-wrap:wrap;}}
+    .sched-block{border-top:2px solid rgba(163,35,75,.4);background:#162034;}
+    .sched-hdr{padding:10px 14px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;color:#f5c518;background:rgba(163,35,75,.18);border-bottom:1px solid rgba(163,35,75,.25);}
+    .sched-season{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:rgba(245,197,24,.7);padding:12px 14px 4px;display:block;}
+    .sched-row{display:flex;align-items:baseline;padding:8px 14px;border-bottom:1px solid rgba(255,255,255,.07);}
+    .sched-num{font-size:9px;color:rgba(245,197,24,.5);width:14px;flex-shrink:0;}
+    .sched-lbl{font-size:11px;color:rgba(255,255,255,.60);flex:1;line-height:1.4;}
+    .sched-val{font-size:15px;font-weight:700;color:#fff;margin-left:6px;white-space:nowrap;}
+    .sched-total{display:flex;align-items:baseline;padding:12px 14px;background:rgba(245,197,24,.05);border-top:1px solid rgba(245,197,24,.2);}
+    .sched-total-lbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);flex:1;}
+    .sched-total-val{font-size:18px;font-weight:700;font-style:italic;color:#f5c518;}
+    .sched-empty{font-size:11px;color:rgba(255,255,255,.22);font-style:italic;padding:12px 14px;}
+        @media(max-width:600px){.panels-row{flex-direction:column;}.header-inner{flex-wrap:wrap;}}
+    .sched-block{border-top:2px solid rgba(163,35,75,.4);background:#162034;}
+    .sched-hdr{padding:10px 14px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;color:#f5c518;background:rgba(163,35,75,.18);border-bottom:1px solid rgba(163,35,75,.25);}
+    .sched-season{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#f5c518;padding:7px 14px 3px;opacity:.75;}
+    .sched-row{display:flex;align-items:baseline;padding:8px 14px;border-bottom:1px solid rgba(255,255,255,.07);}
+    .sched-num{font-size:9px;color:rgba(245,197,24,.5);width:14px;flex-shrink:0;}
+    .sched-lbl{font-size:11px;color:rgba(255,255,255,.60);flex:1;line-height:1.4;}
+    .sched-val{font-size:15px;font-weight:700;color:#fff;margin-left:6px;white-space:nowrap;}
+    .sched-total{display:flex;align-items:baseline;padding:12px 14px;background:rgba(245,197,24,.05);border-top:1px solid rgba(245,197,24,.2);}
+    .sched-total-lbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);flex:1;}
+    .sched-total-val{font-size:18px;font-weight:700;font-style:italic;color:#f5c518;}
+    .sched-empty{font-size:11px;color:rgba(255,255,255,.22);font-style:italic;padding:12px 14px;}
   </style>
 </head>
 <body>
@@ -62,9 +84,9 @@ const MULT={1:1,4:1.0825,6:1.12375};
 const DB={"Pitch Row":[{"boca":113,"fila":3,"numeros":[1,2,3,4,29,30,31,32,33,34],"seatPrice":10300,"of15y":41700,"of30y":73000,"of30y1shot":62600},{"boca":114,"fila":3,"numeros":[37,38,39],"seatPrice":11300,"of15y":41700,"of30y":73000,"of30y1shot":62600},{"boca":116,"fila":3,"numeros":[17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39],"seatPrice":13900,"of15y":41700,"of30y":73000,"of30y1shot":62600},{"boca":116,"fila":4,"numeros":[27,28,29,30,31,32,33,34,35,36,37,38,39],"seatPrice":13900,"of15y":41700,"of30y":73000,"of30y1shot":62600},{"boca":117,"fila":3,"numeros":[4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,32,33,34,35,36,37,38,39],"seatPrice":11300,"of15y":41700,"of30y":73000,"of30y1shot":62600},{"boca":118,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34],"seatPrice":10300,"of15y":41700,"of30y":73000,"of30y1shot":62600},{"boca":101,"fila":2,"numeros":[1,2,3,4,5,6,7,8,17,18,19,20,21,22,23],"seatPrice":12400,"of15y":49400,"of30y":86500,"of30y1shot":74100},{"boca":101,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29],"seatPrice":12400,"of15y":49400,"of30y":86500,"of30y1shot":74100},{"boca":102,"fila":1,"numeros":[7,8,9,10,11,12],"seatPrice":12400,"of15y":49400,"of30y":86500,"of30y1shot":74100},{"boca":102,"fila":2,"numeros":[5,6,7,8,9,15],"seatPrice":12400,"of15y":49400,"of30y":86500,"of30y1shot":74100},{"boca":102,"fila":3,"numeros":[1,2,3,4,5],"seatPrice":12400,"of15y":49400,"of30y":86500,"of30y1shot":74100},{"boca":105,"fila":2,"numeros":[23,24,25,26,27,28,31],"seatPrice":12400,"of15y":49400,"of30y":86500,"of30y1shot":74100},{"boca":106,"fila":2,"numeros":[18,19,20,21,22,23],"seatPrice":12400,"of15y":49400,"of30y":86500,"of30y1shot":74100},{"boca":106,"fila":3,"numeros":[11,12,13,21,22,23,24,25,26,27,28],"seatPrice":12400,"of15y":49400,"of30y":86500,"of30y1shot":74100}],"Balcony":[{"boca":213,"fila":1,"numeros":[5,6,11,12,13,14,15,16,17],"seatPrice":10800,"of15y":32400,"of30y":56700,"of30y1shot":48600},{"boca":214,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":218,"fila":1,"numeros":[15,16,17],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":219,"fila":1,"numeros":[3,4],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":220,"fila":1,"numeros":[6,7,8,9,10,13,14,15],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":221,"fila":1,"numeros":[15,16,17],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":222,"fila":1,"numeros":[3,4,5,8,9,10],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":223,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":224,"fila":1,"numeros":[1,2,3,4,5],"seatPrice":11800,"of15y":35500,"of30y":62100,"of30y1shot":53300},{"boca":243,"fila":1,"numeros":[3,4,5],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":244,"fila":1,"numeros":[14,15,16],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":247,"fila":1,"numeros":[17],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":252,"fila":1,"numeros":[6,7,14,15,16,17],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":226,"fila":1,"numeros":[9,10,11],"seatPrice":10800,"of15y":32400,"of30y":56700,"of30y1shot":48600},{"boca":226,"fila":2,"numeros":[13,14,15],"seatPrice":9800,"of15y":29400,"of30y":51500,"of30y1shot":44100},{"boca":242,"fila":2,"numeros":[9],"seatPrice":8200,"of15y":24700,"of30y":43200,"of30y1shot":37100},{"boca":200,"fila":2,"numeros":[1,2],"seatPrice":11300,"of15y":34000,"of30y":59500,"of30y1shot":51000},{"boca":208,"fila":2,"numeros":[10,11,12],"seatPrice":13900,"of15y":41700,"of30y":73000,"of30y1shot":62600}],"Player Zone":[{"boca":3,"fila":1,"numeros":[7,8,9,10,11,12,13,14,15,16,17,18],"seatPrice":22145,"of15y":70300,"of30y":123000,"of30y1shot":105500},{"boca":3,"fila":5,"numeros":[10,11,12,13,14,15,16,17,18],"seatPrice":22145,"of15y":70300,"of30y":123000,"of30y1shot":105500},{"boca":3,"fila":6,"numeros":[14],"seatPrice":22145,"of15y":70300,"of30y":123000,"of30y1shot":105500},{"boca":3,"fila":7,"numeros":[13,14],"seatPrice":22145,"of15y":70300,"of30y":123000,"of30y1shot":105500},{"boca":4,"fila":5,"numeros":[9,10,11,12,13,14,18,19,20,21],"seatPrice":22145,"of15y":70300,"of30y":123000,"of30y1shot":105500},{"boca":4,"fila":10,"numeros":[27,28],"seatPrice":22145,"of15y":70300,"of30y":123000,"of30y1shot":105500},{"boca":5,"fila":5,"numeros":[7,8,9,10],"seatPrice":22145,"of15y":70300,"of30y":123000,"of30y1shot":105500},{"boca":6,"fila":5,"numeros":[9,10],"seatPrice":22145,"of15y":70300,"of30y":123000,"of30y1shot":105500},{"boca":6,"fila":6,"numeros":[1,2,3],"seatPrice":22145,"of15y":70300,"of30y":123000,"of30y1shot":105500}],"VRS":[{"boca":1025,"fila":5,"numeros":[8,9,10,11],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1026,"fila":1,"numeros":[5,6,7,8,9],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1026,"fila":2,"numeros":[7,8,9,10],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1026,"fila":3,"numeros":[5,6,7,8,9,10],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1026,"fila":4,"numeros":[3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1026,"fila":5,"numeros":[7,8,9],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1027,"fila":2,"numeros":[1,2,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1027,"fila":3,"numeros":[3,4,5,6,7,8,9,10],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1027,"fila":4,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1027,"fila":5,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1028,"fila":2,"numeros":[7,8],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1028,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1028,"fila":4,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1029,"fila":2,"numeros":[20,21,24,25],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1030,"fila":2,"numeros":[20],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1055,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1055,"fila":2,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1055,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1055,"fila":4,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1055,"fila":5,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1056,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1056,"fila":2,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1056,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1056,"fila":4,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1056,"fila":5,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1057,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1057,"fila":2,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1057,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1057,"fila":4,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1057,"fila":5,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1058,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1058,"fila":2,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1058,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1058,"fila":4,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1058,"fila":5,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1059,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1059,"fila":2,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1059,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1059,"fila":4,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1059,"fila":5,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1060,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1060,"fila":2,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1060,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1060,"fila":4,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1060,"fila":5,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1061,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1061,"fila":2,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1061,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1061,"fila":4,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],"seatPrice":7000,"of15y":21000,"of30y":36800,"of30y1shot":31500},{"boca":1061,"fila":5,"numeros":[1,2,3],"seatPrice":8500,"of15y":25500,"of30y":44600,"of30y1shot":38300},{"boca":1300,"fila":1,"numeros":[17,18,19],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1300,"fila":3,"numeros":[18,19],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1300,"fila":5,"numeros":[18,19,20],"seatPrice":8500,"of15y":25500,"of30y":44600,"of30y1shot":38300},{"boca":1301,"fila":5,"numeros":[1,2,3,17,18,19],"seatPrice":9500,"of15y":28500,"of30y":49900,"of30y1shot":42800},{"boca":1302,"fila":1,"numeros":[17,18],"seatPrice":9000,"of15y":27000,"of30y":47300,"of30y1shot":40500},{"boca":1302,"fila":2,"numeros":[17,18,19],"seatPrice":9000,"of15y":27000,"of30y":47300,"of30y1shot":40500},{"boca":1302,"fila":3,"numeros":[1,2],"seatPrice":10500,"of15y":31500,"of30y":55100,"of30y1shot":47300},{"boca":1303,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"seatPrice":10000,"of15y":30000,"of30y":52500,"of30y1shot":45000},{"boca":1303,"fila":2,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"seatPrice":10000,"of15y":30000,"of30y":52500,"of30y1shot":45000},{"boca":1303,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"seatPrice":10000,"of15y":30000,"of30y":52500,"of30y1shot":45000},{"boca":1303,"fila":4,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"seatPrice":10000,"of15y":30000,"of30y":52500,"of30y1shot":45000},{"boca":1303,"fila":5,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],"seatPrice":10000,"of15y":30000,"of30y":52500,"of30y1shot":45000},{"boca":1319,"fila":4,"numeros":[14,15,16],"seatPrice":10000,"of15y":30000,"of30y":52500,"of30y1shot":45000},{"boca":1319,"fila":5,"numeros":[13,14,15,16,17],"seatPrice":8500,"of15y":25500,"of30y":44600,"of30y1shot":38300},{"boca":1322,"fila":1,"numeros":[17,18,19],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1322,"fila":3,"numeros":[18,19],"seatPrice":5750,"of15y":17250,"of30y":30200,"of30y1shot":25900},{"boca":1332,"fila":5,"numeros":[17,18],"seatPrice":6250,"of15y":18750,"of30y":32800,"of30y1shot":28100},{"boca":1333,"fila":2,"numeros":[17,18,19],"seatPrice":6250,"of15y":18750,"of30y":32800,"of30y1shot":28100},{"boca":1333,"fila":5,"numeros":[19],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1335,"fila":2,"numeros":[1,2,3,4],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1335,"fila":5,"numeros":[1,2,3],"seatPrice":8500,"of15y":25500,"of30y":44600,"of30y1shot":38300},{"boca":1351,"fila":1,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1351,"fila":2,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1351,"fila":3,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1351,"fila":4,"numeros":[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000},{"boca":1351,"fila":5,"numeros":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],"seatPrice":8000,"of15y":24000,"of30y":42000,"of30y1shot":36000}]};
 
 const LANGS={
-  en:{product:"Product",years:"Years",boca:"Boca",fila:"Fila",seats:"Seats",payments:"Payments",yrs15:"15 years",yrs30:"30 years",pay1:"1 payment",pay4:"4 payments",pay6:"6 payments",products:{"Pitch Row":"Pitch Row","Balcony":"Balcony","Player Zone":"Player Zone","VRS":"VIP Ring Seat"},seatsAvail:n=>`${n} seats available in this row`,ownershipFee:"Ownership Fee",ofDueNow:"OF Due Now",payEachSeason:"Pay each season",vipHospitality:"VIP Hospitality Seats",totalOf:"Total OF + Hospitality",avgAnnual:"Avg annual value OF",pricePerSeat:"Price per seat (year 1)",saving:"Saving",selectTerm:"Select your term",compareTo:"Compare to",reset:"Reset",vrsWarning:"IMPORTANT: Available from Season 2027/28",mainTitle:"OWNERSHIP FEE CALCULATOR",subtitle:"FC Barcelona & Legends Global",vat:"* 21% VAT not included."},
-  es:{product:"Producto",years:"Años",boca:"Boca",fila:"Fila",seats:"Asientos",payments:"Pagos",yrs15:"15 años",yrs30:"30 años",pay1:"1 pago",pay4:"4 pagos",pay6:"6 pagos",products:{"Pitch Row":"Pitch Row","Balcony":"Balcony","Player Zone":"Player Zone","VRS":"VIP Ring Seat"},seatsAvail:n=>`${n} asientos disponibles en esta fila`,ownershipFee:"Canon de Titularidad",ofDueNow:"Pago Inicial",payEachSeason:"Pago por temporada",vipHospitality:"Anualidad Asiento VIP",totalOf:"Total Canon + Hospitalidad",avgAnnual:"Valor anual promedio",pricePerSeat:"Precio por asiento (año 1)",saving:"Ahorro",selectTerm:"Selecciona tu opción",compareTo:"Comparar con",reset:"Reiniciar",vrsWarning:"IMPORTANTE: Disponible a partir de la Temporada 2027/28",mainTitle:"CALCULADORA DE CANON DE TITULARIDAD",subtitle:"FC Barcelona & Legends Global",vat:"* IVA del 21% no incluido."},
-  ca:{product:"Producte",years:"Anys",boca:"Boca",fila:"Fila",seats:"Seients",payments:"Pagaments",yrs15:"15 anys",yrs30:"30 anys",pay1:"1 pagament",pay4:"4 pagaments",pay6:"6 pagaments",products:{"Pitch Row":"Pitch Row","Balcony":"Balcony","Player Zone":"Player Zone","VRS":"VIP Ring Seat"},seatsAvail:n=>`${n} seients disponibles en aquesta fila`,ownershipFee:"Canon de Titularitat",ofDueNow:"Pagament Inicial",payEachSeason:"Pagament per temporada",vipHospitality:"Anualitat Seient VIP",totalOf:"Total Cànon + Hospitalitat",avgAnnual:"Valor anual mitjà",pricePerSeat:"Preu per seient (any 1)",saving:"Estalvi",selectTerm:"Selecciona la teva opció",compareTo:"Comparar amb",reset:"Reiniciar",vrsWarning:"IMPORTANT: Disponible a partir de la Temporada 2027/28",mainTitle:"CALCULADORA DE CÀNON DE TITULARITAT",subtitle:"FC Barcelona & Legends Global",vat:"* IVA del 21% no inclòs."}
+  en:{product:"Product",years:"Years",boca:"Boca",fila:"Fila",seats:"Seats",payments:"Payments",yrs15:"15 years",yrs30:"30 years",pay1:"1 payment",pay4:"4 payments",pay6:"6 payments",products:{"Pitch Row":"Pitch Row","Balcony":"Balcony","Player Zone":"Player Zone","VRS":"VIP Ring Seat"},seatsAvail:n=>`${n} seats available in this row`,ownershipFee:"Ownership Fee",ofDueNow:"OF Due Now",payEachSeason:"Pay each season",vipHospitality:"VIP Hospitality Seats",totalOf:"Total OF + Hospitality",avgAnnual:"Avg annual value OF",pricePerSeat:"Price per seat (year 1)",saving:"Saving",selectTerm:"Select your term",compareTo:"Compare to",reset:"Reset",vrsWarning:"IMPORTANT: Available from Season 2027/28",mainTitle:"OWNERSHIP FEE CALCULATOR",subtitle:"FC Barcelona & Legends Global",vat:"* 21% VAT not included.",scheduleTitle:"UPCOMING PAYMENTS",scheduleEmpty:"Configure the calculator above to see the payment schedule.",schedPagoInicial:"Initial Canon Payment (upon contract signing)",schedAnualidad:"VIP Seat Annual Fee",schedTotal:"Total due in 2026/27"},
+  es:{product:"Producto",years:"Años",boca:"Boca",fila:"Fila",seats:"Asientos",payments:"Pagos",yrs15:"15 años",yrs30:"30 años",pay1:"1 pago",pay4:"4 pagos",pay6:"6 pagos",products:{"Pitch Row":"Pitch Row","Balcony":"Balcony","Player Zone":"Player Zone","VRS":"VIP Ring Seat"},seatsAvail:n=>`${n} asientos disponibles en esta fila`,ownershipFee:"Canon de Titularidad",ofDueNow:"Pago Inicial",payEachSeason:"Pago por temporada",vipHospitality:"Anualidad Asiento VIP",totalOf:"Total Canon + Hospitalidad",avgAnnual:"Valor anual promedio",pricePerSeat:"Precio por asiento (año 1)",saving:"Ahorro",selectTerm:"Selecciona tu opción",compareTo:"Comparar con",reset:"Reiniciar",vrsWarning:"IMPORTANTE: Disponible a partir de la Temporada 2027/28",mainTitle:"CALCULADORA DE CANON DE TITULARIDAD",subtitle:"FC Barcelona & Legends Global",vat:"* IVA del 21% no incluido.",scheduleTitle:"PRÓXIMOS PAGOS",scheduleEmpty:"Configura la calculadora de arriba para ver el calendario de pagos.",schedPagoInicial:"Pago Inicial Canon (con la firma del contrato)",schedAnualidad:"Anualidad del Asiento VIP",schedTotal:"Total a pagar en 2026/27"},
+  ca:{product:"Producte",years:"Anys",boca:"Boca",fila:"Fila",seats:"Seients",payments:"Pagaments",yrs15:"15 anys",yrs30:"30 anys",pay1:"1 pagament",pay4:"4 pagaments",pay6:"6 pagaments",products:{"Pitch Row":"Pitch Row","Balcony":"Balcony","Player Zone":"Player Zone","VRS":"VIP Ring Seat"},seatsAvail:n=>`${n} seients disponibles en aquesta fila`,ownershipFee:"Canon de Titularitat",ofDueNow:"Pagament Inicial",payEachSeason:"Pagament per temporada",vipHospitality:"Anualitat Seient VIP",totalOf:"Total Cànon + Hospitalitat",avgAnnual:"Valor anual mitjà",pricePerSeat:"Preu per seient (any 1)",saving:"Estalvi",selectTerm:"Selecciona la teva opció",compareTo:"Comparar amb",reset:"Reiniciar",vrsWarning:"IMPORTANT: Disponible a partir de la Temporada 2027/28",mainTitle:"CALCULADORA DE CÀNON DE TITULARITAT",subtitle:"FC Barcelona & Legends Global",vat:"* IVA del 21% no inclòs.",scheduleTitle:"PROPERS PAGAMENTS",scheduleEmpty:"Configura la calculadora de dalt per veure el calendari de pagaments.",schedPagoInicial:"Pagament Inicial Cànon (amb la signatura del contracte)",schedAnualidad:"Anualitat del Seient VIP",schedTotal:"Total a pagar el 2026/27"}
 };
 
 const fmt=n=>{const r=Math.round(n);return r.toLocaleString("es-ES",{useGrouping:true,minimumFractionDigits:0})+" €";};
@@ -105,15 +127,51 @@ function mkSel(lbl,val,opts,onChange){
   app(wrap,sel);app(row,label,wrap);return row;
 }
 
-function buildPanel(container,state,isEmpty,isB,t,savingAmt){
-  container.innerHTML="";
+function buildSchedBlock(data,state,t){
+  // Returns array of section elements for this panel's schedule
+  const sections=[];
+  const block=el("div","sched-block");
+  const hdr=el("div","sched-hdr");hdr.textContent=t.scheduleTitle;block.appendChild(hdr);
+
+  if(!state||!data){
+    const empty=el("div","sched-empty");empty.textContent=t.scheduleEmpty;block.appendChild(empty);
+    sections.push(block);return sections;
+  }
+  const isVRS=state.prod==="VRS";
+  if(!isVRS){
+    const s1=el("span","sched-season");s1.textContent="Temporada 2026/27";block.appendChild(s1);
+    const r1=el("div","sched-row");
+    r1.innerHTML=`<span class="sched-num">1.</span><span class="sched-lbl">${t.schedPagoInicial}</span><span class="sched-val">${fmt(data.dueNow)}</span>`;
+    block.appendChild(r1);
+    const r2=el("div","sched-row");
+    r2.innerHTML=`<span class="sched-num">2.</span><span class="sched-lbl">${t.schedAnualidad}</span><span class="sched-val">${fmt(data.seatTotal)}</span>`;
+    block.appendChild(r2);
+    const tot=el("div","sched-total");
+    tot.innerHTML=`<span class="sched-total-lbl">${t.schedTotal}</span><span class="sched-total-val">${fmt(data.dueNow+data.seatTotal)}</span>`;
+    block.appendChild(tot);
+  } else {
+    const s1=el("span","sched-season");s1.textContent="Temporada 2026/27";block.appendChild(s1);
+    const r1=el("div","sched-row");
+    r1.innerHTML=`<span class="sched-num">1.</span><span class="sched-lbl">${t.schedPagoInicial}</span><span class="sched-val">${fmt(data.dueNow)}</span>`;
+    block.appendChild(r1);
+    const s2=el("span","sched-season");s2.textContent="Temporada 2027/28";block.appendChild(s2);
+    const r2=el("div","sched-row");
+    r2.innerHTML=`<span class="sched-num">1.</span><span class="sched-lbl">${t.schedAnualidad}</span><span class="sched-val">${fmt(data.seatTotal)}</span>`;
+    block.appendChild(r2);
+  }
+  sections.push(block);
+  return sections;
+}
+
+// Returns named sections for a panel so they can be paired and aligned
+function getPanelSections(state,isEmpty,isB,t,savingAmt){
   const cs=isEmpty?(isB?initB:initA):state;
   const{prod,yrs,boca,fila,qty,numPay}=cs;
+  const data=isEmpty?null:calcData(prod,yrs,boca,fila,qty,numPay);
   const bocas=getBocas(prod);
   const filas=getFilas(prod,boca);
   const curRow=isEmpty?null:getRow(prod,boca,fila);
   const maxSeats=curRow?curRow.numeros.length:10;
-  const data=isEmpty?null:calcData(prod,yrs,boca,fila,qty,numPay);
   const seatOpts=[1,2,3,4,5,6,8,10].filter(n=>n<=maxSeats);
 
   function upd(key,cast){
@@ -123,17 +181,21 @@ function buildPanel(container,state,isEmpty,isB,t,savingAmt){
       if(key==="prod"){const b0=getBocas(val)[0];next.boca=b0;next.fila=getFilas(val,b0)[0];const r=getRow(val,next.boca,next.fila);if(r&&next.qty>r.numeros.length)next.qty=1;}
       if(key==="boca"){next.fila=getFilas(next.prod,val)[0];const r=getRow(next.prod,val,next.fila);if(r&&next.qty>r.numeros.length)next.qty=1;}
       if(key==="fila"){const r=getRow(next.prod,next.boca,val);if(r&&next.qty>r.numeros.length)next.qty=1;}
-      if(isB)stateB=next;else stateA=next;
-      render();
+      if(isB)stateB=next;else stateA=next;render();
     };
   }
 
+  const sections={};
+
+  // Header
   const hdr=el("div","panel-hdr");
   const htxt=el("span");htxt.textContent=isB?t.compareTo:t.selectTerm;
   const btn=el("button","reset-btn");btn.textContent=t.reset;
   btn.addEventListener("click",()=>{if(isB)stateB=null;else stateA=null;render();});
-  app(hdr,htxt,btn);container.appendChild(hdr);
+  app(hdr,htxt,btn);
+  sections.hdr=hdr;
 
+  // Selectors
   const sels=el("div","selectors");
   function mkSelWithEmpty(lbl,val,opts,onChange){
     const row=el("div","sel-row");
@@ -148,22 +210,20 @@ function buildPanel(container,state,isEmpty,isB,t,savingAmt){
   if(isEmpty){
     const b0=getBocas("Pitch Row")[0];
     const f0=getFilas("Pitch Row",b0)[0];
-    const seatOpts0=[1,2,3,4,5,6,8,10];
     function updEmpty(key,cast){
       return val=>{
         const base={prod:"Pitch Row",yrs:"30",boca:b0,fila:f0,qty:1,numPay:4};
         const next={...base,[key]:cast?cast(val):val};
         if(key==="prod"){const b1=getBocas(val)[0];next.boca=b1;next.fila=getFilas(val,b1)[0];}
         if(key==="boca"){next.fila=getFilas(next.prod,val)[0];}
-        if(isB)stateB=next;else stateA=next;
-        render();
+        if(isB)stateB=next;else stateA=next;render();
       };
     }
     sels.appendChild(mkSelWithEmpty(t.product,"",["Pitch Row","Balcony","Player Zone","VRS"].map(v=>({v,l:t.products[v]})),updEmpty("prod")));
     sels.appendChild(mkSelWithEmpty(t.years,"",[{v:"15",l:t.yrs15},{v:"30",l:t.yrs30}],updEmpty("yrs")));
     sels.appendChild(mkSelWithEmpty(t.boca,"",getBocas("Pitch Row").map(b=>({v:b,l:b})),updEmpty("boca")));
     sels.appendChild(mkSelWithEmpty(t.fila,"",getFilas("Pitch Row",b0).map(f=>({v:f,l:f})),updEmpty("fila")));
-    sels.appendChild(mkSelWithEmpty(t.seats,"",seatOpts0.map(n=>({v:n,l:n})),updEmpty("qty",Number)));
+    sels.appendChild(mkSelWithEmpty(t.seats,"",[1,2,3,4,5,6,8,10].map(n=>({v:n,l:n})),updEmpty("qty",Number)));
     sels.appendChild(mkSelWithEmpty(t.payments,"",[{v:1,l:t.pay1},{v:4,l:t.pay4},{v:6,l:t.pay6}],updEmpty("numPay",Number)));
   } else {
     sels.appendChild(mkSel(t.product,prod,["Pitch Row","Balcony","Player Zone","VRS"].map(v=>({v,l:t.products[v]})),upd("prod")));
@@ -173,30 +233,92 @@ function buildPanel(container,state,isEmpty,isB,t,savingAmt){
     sels.appendChild(mkSel(t.seats,qty,seatOpts.map(n=>({v:n,l:n})),upd("qty",Number)));
     sels.appendChild(mkSel(t.payments,numPay,[{v:1,l:t.pay1},{v:4,l:t.pay4},{v:6,l:t.pay6}],upd("numPay",Number)));
   }
-  container.appendChild(sels);
+  sections.sels=sels;
 
+  // OF section title
+  const ofTitle=el("div","sec-title");
+  const ofLbl=el("span");ofLbl.textContent=t.ownershipFee;
+  const ofVal=el("span","sec-val");ofVal.textContent=data?fmt(data.totalOF):"—";
+  app(ofTitle,ofLbl,ofVal);
+  sections.ofTitle=ofTitle;
 
-  function sec(lbl,val){const d=el("div","sec-title");const s=el("span");s.textContent=lbl;const v=el("span","sec-val");v.textContent=val;app(d,s,v);container.appendChild(d);}
-  function row(lbl,val){const d=el("div","data-row");const l=el("span","data-lbl");l.textContent=lbl;const v=el("span","data-val");v.textContent=val;app(d,l,v);container.appendChild(d);}
-  function payRow(lbl,n,amt){const d=el("div","pay-row");const l=el("span","pay-lbl");l.textContent=lbl;const r=el("div","pay-right");const b=el("span","pay-badge");b.textContent=n+"×";const a=el("span","pay-amt");a.textContent=amt;app(r,b,a);app(d,l,r);container.appendChild(d);}
+  // OF due now
+  const ofDue=el("div","data-row");
+  const ofDueLbl=el("span","data-lbl");ofDueLbl.textContent=t.ofDueNow;
+  const ofDueVal=el("span","data-val");ofDueVal.textContent=data?fmt(data.dueNow):"—";
+  app(ofDue,ofDueLbl,ofDueVal);
+  sections.ofDue=ofDue;
 
-  sec(t.ownershipFee,data?fmt(data.totalOF):"—");
-  row(t.ofDueNow,data?fmt(data.dueNow):"—");
-  if(data&&data.pendingPays>0)payRow(t.payEachSeason,data.pendingPays,fmt(data.payAmt));
-  sec(t.vipHospitality,data?fmt(data.seatTotal):"—");
+  // Pay each season (may be empty spacer)
+  const payRow=el("div","pay-row");
+  if(data&&data.pendingPays>0){
+    const pl=el("span","pay-lbl");pl.textContent=t.payEachSeason;
+    const pr=el("div","pay-right");
+    const badge=el("span","pay-badge");badge.textContent=data.pendingPays+"×";
+    const pa=el("span","pay-amt");pa.textContent=fmt(data.payAmt);
+    app(pr,badge,pa);app(payRow,pl,pr);
+  } else {
+    payRow.style.visibility="hidden";
+    const pl=el("span","pay-lbl");pl.textContent=t.payEachSeason;
+    const pr=el("div","pay-right");
+    const badge=el("span","pay-badge");badge.textContent="—";
+    const pa=el("span","pay-amt");pa.textContent="—";
+    app(pr,badge,pa);app(payRow,pl,pr);
+  }
+  sections.payRow=payRow;
 
+  // Seat section title
+  const seatTitle=el("div","sec-title");
+  const seatLbl=el("span");seatLbl.textContent=t.vipHospitality;
+  const seatVal=el("span","sec-val");seatVal.textContent=data?fmt(data.seatTotal):"—";
+  app(seatTitle,seatLbl,seatVal);
+  sections.seatTitle=seatTitle;
+
+  // Grand total
   const grand=el("div","grand-row");
   const gl=el("span","grand-lbl");gl.textContent=t.totalOf;
   const gv=el("span","grand-val");gv.textContent=data?fmt(data.grand):"—";
-  app(grand,gl,gv);container.appendChild(grand);
+  app(grand,gl,gv);
+  sections.grand=grand;
 
+  // Footer (saving only)
   const footer=el("div","footer");
-  [{k:t.avgAnnual,v:data?fmt(data.avgAnnual):"—",green:false},{k:t.pricePerSeat,v:data?fmt(data.seatPrice):"—",green:false},...(savingAmt?[{k:t.saving,v:savingAmt,green:true}]:[])].forEach(({k,v,green})=>{
-    const d=el("div","footer-row");const l=el("span","footer-lbl");l.textContent=k;const val=el("span","footer-val"+(green?" green":""));val.textContent=v;app(d,l,val);footer.appendChild(d);
-  });
-  container.appendChild(footer);
+  if(savingAmt){
+    const d=el("div","footer-row");
+    const l=el("span","footer-lbl");l.textContent=t.saving;
+    const v=el("span","footer-val green");v.textContent=savingAmt;
+    app(d,l,v);footer.appendChild(d);
+  } else {
+    // empty spacer to keep alignment
+    const d=el("div","footer-row");d.style.visibility="hidden";
+    const l=el("span","footer-lbl");l.textContent=t.saving;
+    const v=el("span","footer-val");v.textContent="—";
+    app(d,l,v);footer.appendChild(d);
+  }
+  sections.footer=footer;
 
-  if(prod==="VRS"&&!isEmpty){const w=el("div","vrs-warning");w.innerHTML="⚠ <strong>"+t.vrsWarning+"</strong>";container.appendChild(w);}
+  // VRS warning
+  if(prod==="VRS"&&!isEmpty){
+    const w=el("div","vrs-warning");w.innerHTML="⚠ <strong>"+t.vrsWarning+"</strong>";
+    sections.vrsWarn=w;
+  }
+
+  // Spacer
+  const spacer=el("div","");spacer.style.cssText="height:12px;background:#162034;border-top:1px solid rgba(255,255,255,.06);";
+  sections.spacer=spacer;
+
+  // Schedule
+  const schedData=isEmpty?null:data;
+  const schedBlock=buildSchedBlock(schedData,isEmpty?null:cs,t)[0];
+  sections.sched=schedBlock;
+
+  return sections;
+}
+
+function buildPanel(container,state,isEmpty,isB,t,savingAmt){
+  container.innerHTML="";
+  // This is now just a thin wrapper — sections are built via getPanelSections
+  // and assembled by render() for alignment
 }
 
 function render(){
@@ -208,6 +330,7 @@ function render(){
 
   const root=document.getElementById("app");root.innerHTML="";
 
+  // Header
   const hbox=el("div","header-box");
   const hinner=el("div","header-inner");
   const logos=el("div","header-logos");
@@ -221,13 +344,43 @@ function render(){
 
   const pbox=el("div","panels-box");
   const prow=el("div","panels-row");
+
   const pA=el("div","panel panel-a");
   const pB=el("div","panel panel-b");
-  buildPanel(pA,stateA,!stateA,false,t,savingA);
-  buildPanel(pB,stateB,!stateB,true,t,savingB);
+
+  const sA=getPanelSections(stateA,!stateA,false,t,savingA);
+  const sB=getPanelSections(stateB,!stateB,true,t,savingB);
+
+  // Sections to render in order — always same set, spacer added where missing
+  const order=["hdr","sels","ofTitle","ofDue","payRow","seatTitle","grand","footer","spacer","sched"];
+  // Add vrsWarn if either side has it
+  if(sA.vrsWarn||sB.vrsWarn) order.splice(order.indexOf("spacer"),0,"vrsWarn");
+
+  order.forEach(key=>{
+    const a=sA[key]||(()=>{const d=el("div","");d.style.visibility="hidden";d.style.minHeight="1px";return d;})();
+    const b=sB[key]||(()=>{const d=el("div","");d.style.visibility="hidden";d.style.minHeight="1px";return d;})();
+    pA.appendChild(a);
+    pB.appendChild(b);
+  });
+
   app(prow,pA,pB);pbox.appendChild(prow);
+
   const vat=el("div","vat-note");vat.textContent=t.vat;pbox.appendChild(vat);
   root.appendChild(pbox);
+
+  // Now equalize matching section heights
+  requestAnimationFrame(()=>{
+    const keysA=[...pA.children];
+    const keysB=[...pB.children];
+    for(let i=0;i<keysA.length;i++){
+      const a=keysA[i],b=keysB[i];
+      if(!a||!b)continue;
+      a.style.minHeight='';b.style.minHeight='';
+      const ha=a.offsetHeight,hb=b.offsetHeight;
+      const m=Math.max(ha,hb);
+      if(m>0){a.style.minHeight=m+'px';b.style.minHeight=m+'px';}
+    }
+  });
 }
 
 render();
